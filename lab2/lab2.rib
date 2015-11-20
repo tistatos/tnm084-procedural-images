@@ -1,0 +1,44 @@
+##RenderMan RIB-Structure 1.0
+FrameBegin 1
+
+Display "bacon.tiff" "file" "rgba"
+Format 1024 768 -1
+ShadingRate 1
+Projection "perspective" "fov" [30]
+FrameAspectRatio 1.33
+Identity
+
+# Default distant headlight
+LightSource "distantlight" 1
+
+#move camera back
+Translate 0 0 2.5
+WorldBegin
+
+AttributeBegin
+  Rotate 10 0 1 0
+  Rotate 5 1 0 0
+  Surface "bacon_surface" #apply bacon surface
+  #fix displacement
+  Attribute "displacementbound" "float sphere" [0.8] "coordinatesystem" ["shader"]
+  Displacement "bacon_displacement" # apply bacon displacement
+  TransformBegin
+  Polygon "P" [
+               -0.7  -0.1 0 
+               -0.7   0.1 0 
+                0.7   0.1 0
+                0.7  -0.1 0
+               ]
+          "st" [
+                0   0
+                0   1
+                1   1
+                1   0
+               ]     
+  TransformEnd
+
+AttributeEnd
+
+WorldEnd
+
+FrameEnd
