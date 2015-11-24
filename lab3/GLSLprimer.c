@@ -161,7 +161,8 @@ int main(int argc, char *argv[]) {
 	soupCreateSphere(&myShape, 1.0, 50);
 	//soupReadOBJ(&myShape, MESHFILENAME);
 	soupPrintInfo(myShape);
-
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_TEXTURE_2D);
 	createTexture(&texture, TEXTUREFILENAME);
 
